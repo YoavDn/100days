@@ -1,0 +1,113 @@
+.app {
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  text-align: center;
+
+  h1 {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+
+  p {
+    color: #94a3b8;
+  }
+}
+
+.tag-list {
+  position: relative;
+  width: 30rem;
+  max-width: 90vw;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 1rem 0;
+  position: relative;
+  padding: 1.5rem 0;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: linear-gradient(
+      270deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0%) 100%
+    );
+    width: 165px;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(
+      90deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0%) 100%
+    );
+    width: 165px;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+.loop-slider {
+  .inner {
+    display: flex;
+    width: fit-content;
+    animation-name: loop;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: var(--direction);
+    animation-duration: var(--duration);
+  }
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0 0.2rem;
+  color: #1f2937;
+  font-size: 0.9rem;
+  background-color: #f9fafb;
+  border: solid 1px #6b7280;
+  border-radius: 0.4rem;
+  padding: 0.7rem 1rem;
+  margin-right: 1rem; // Must used margin-right instead of gap for the loop to be smooth
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  span {
+    font-size: 1.2rem;
+    color: #64748b;
+  }
+}
+
+@keyframes loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
