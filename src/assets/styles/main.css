@@ -1,19 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+/* body {
   font-family: 'Heebo', sans-serif;
   display: flex;
   height: 100vh;
   align-items: center;
   justify-content: center;
-}
+} */
 
 canvas {
   border: solid 1px #27272a;
+}
+
+.page {
+  display: grid;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  place-items: center;
+  user-select: none;
+  justify-content: center;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.index-page {
+  max-height: 100%;
+  padding: 60px 40px 30px;
+  overflow: auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .index-page {
+    width: auto;
+  }
 }

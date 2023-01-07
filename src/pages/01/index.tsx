@@ -1,5 +1,5 @@
 import './index.scss'
-
+import { Link } from 'react-router-dom'
 const COLORS = [
   '#bbf7d0',
   '#99f6e4',
@@ -66,6 +66,10 @@ const Tag = ({ text }: { text: string }) => (
 
 const App = () => (
   <div className="app">
+    <Link className="absolute top-5 left-5" to={'/'}>
+      Back
+    </Link>
+
     <header>
       <h1>Infinite Scroll Animation</h1>
       <p>CSS only, content independent, bi-directional, customizable</p>
