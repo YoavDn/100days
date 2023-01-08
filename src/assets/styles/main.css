@@ -10,14 +10,6 @@
   box-sizing: border-box;
 }
 
-/* body {
-  font-family: 'Heebo', sans-serif;
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-} */
-
 canvas {
   border: solid 1px #27272a;
 }
@@ -52,4 +44,8 @@ canvas {
   .index-page {
     width: auto;
   }
+}
+
+.link {
+  @apply absolute  text-gray-300 font-mono top-5 left-5 hover:text-gray-500;
 }

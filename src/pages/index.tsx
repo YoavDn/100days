@@ -10,7 +10,7 @@ export default function () {
   return (
     <>
       <div className="page">
-        <div className="index-page centered w-[500px]">
+        <div className="index-page centered">
           <h1 className="font-mono font-bold mb-4 text-lg ">100 Challenge</h1>
           <pre className="grid gap-y-1 gap-x-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {links.map(link => (

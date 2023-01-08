@@ -37,6 +37,7 @@ export default function () {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
     const { width, height } = canvas
+    console.log(width)
 
     f.step = (x: number, y: number, rad: number) => {
       const length = random() * len
