@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import { useRafLoop } from 'react-use'
 import { initCanvas, polar2cart, r15, r180, r90 } from '../utils'
@@ -81,11 +82,8 @@ export default function () {
   return (
     <>
       <div className="page">
-        <Link
-          className="absolute  text-gray-300 font-mono top-5 left-5 hover:text-gray-500"
-          to={'/'}
-        >
-          Back
+        <Link className="link" to={'/'}>
+          <ChevronLeftIcon className="w-6 h-6" />
         </Link>
         <div className="centered">
           <canvas className="canvas" onClick={f.start} ref={el}></canvas>

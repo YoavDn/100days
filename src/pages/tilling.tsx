@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
+import { Note } from '../components/Note'
+
 import { Link } from 'react-router-dom'
 import { initCanvas } from '../utils'
 
@@ -18,7 +21,7 @@ const draw = (
 
       const xOff = x * tileSize
       const yOff = y * tileSize
-      console.log(isToLeft)
+
       ctx.beginPath()
 
       if (isToLeft) {
@@ -49,15 +52,16 @@ export default function () {
     <>
       <main className="page">
         <Link className="link" to={'/'}>
-          Back
+          <ChevronLeftIcon className="w-6 h-6" />
         </Link>
         <div className="centered">
           <canvas
-            onClick={() => setTileSize(tileSize + 1)}
+            onClick={() => setTileSize((tileSize % 30) + 1)}
             className="canvas"
             style={{ width: '400px', height: '400px' }}
             ref={el}
           ></canvas>
+          <p className="font-mono py-3 text-gray-500">Tiles: {tileSize}</p>
         </div>
       </main>
     </>

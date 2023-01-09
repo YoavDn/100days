@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import { useRafLoop } from 'react-use'
 import { initCanvas, randomColor } from '../utils'
@@ -81,7 +82,7 @@ export default function () {
     <>
       <main className="page">
         <Link className="link" to={'/'}>
-          back
+          <ChevronLeftIcon className="w-6 h-6" />
         </Link>
         <div className="centered">
           <canvas

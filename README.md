@@ -1,1 +1,1 @@
-# 100 days challenge inspired by the one and only antfu
+# First steps into the world of Generative Art
