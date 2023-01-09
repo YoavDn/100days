@@ -5,6 +5,8 @@ const links = [
   { url: '/tilling', title: 'Tiles', number: '01' },
   { url: '/dvd', title: 'DVD', number: '02' },
   { url: '/plum', title: "Antfu's plum", number: '03' },
+  { url: '/joy-division', title: 'Joy division', number: '04' },
+  { url: '/cubic-disarray', title: 'Cubic Disarray', number: '05' },
 ]
 
 export default function () {

@@ -15,21 +15,17 @@ const draw = (
 ) => {
   ctx.clearRect(0, 0, width, height)
 
-  for (let x = 0; x <= width / tileSize; x++) {
-    for (let y = 0; y <= height / tileSize; y++) {
-      let isToLeft = random() <= 0.5
-
-      const xOff = x * tileSize
-      const yOff = y * tileSize
+  for (let x = 0; x < width; x += tileSize) {
+    for (let y = 0; y < height; y += tileSize) {
+      let isToLeft = random() >= 0.5
 
       ctx.beginPath()
-
       if (isToLeft) {
-        ctx.moveTo(xOff, yOff)
-        ctx.lineTo(xOff + tileSize, yOff + tileSize)
+        ctx.moveTo(x, y)
+        ctx.lineTo(x + tileSize, y + tileSize)
       } else {
-        ctx.moveTo(xOff + tileSize, yOff)
-        ctx.lineTo(xOff, yOff + tileSize)
+        ctx.moveTo(x + tileSize, y)
+        ctx.lineTo(x, y + tileSize)
       }
 
       ctx.stroke()
@@ -39,7 +35,7 @@ const draw = (
 
 export default function () {
   const el = useRef<HTMLCanvasElement | null>(null)
-  const [tileSize, setTileSize] = useState(3)
+  const [tileSize, setTileSize] = useState(2)
 
   useEffect(() => {
     const canvas = el.current!

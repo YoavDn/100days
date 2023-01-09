@@ -16,3 +16,5 @@ export function polar2cart(x = 0, y = 0, r = 0, theta = 0) {
   const dy = r * Math.sin(theta)
   return [x + dx, y + dy]
 }
+
+export const plusOrMinus = () => (Math.random() < 0.5 ? 1 : -1)
