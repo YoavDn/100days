@@ -1,6 +1,6 @@
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { initCanvas, r180, r360, randomColor } from '../utils'
 
 type PointType = { x: number; y: number }
@@ -31,11 +31,11 @@ function draw(
   ctx.lineJoin = 'bevel'
   const lines: LineType[] = []
   let odd = false
-  for (let i = size; i <= w; i += size) {
+  for (let i = size / 2; i <= h; i += size) {
     const line: PointType[] = []
     odd = !odd
 
-    for (let j = size; j <= w; j += size) {
+    for (let j = size / 2; j <= w - size; j += size) {
       const dot: PointType = {
         x: j + (Math.random() * 0.8 - 0.4) * size + (odd ? size / 2 : 0),
         y: i + (Math.random() * 0.8 - 0.4) * size,
@@ -64,8 +64,10 @@ function draw(
     }
   }
 }
+
 export default function () {
   const el = useRef<HTMLCanvasElement | null>(null)
+  const [size, setSize] = useState(7)
 
   let run = () => {}
   useEffect(() => {
@@ -73,9 +75,9 @@ export default function () {
     const { ctx } = initCanvas(canvas)
     const { width, height } = canvas
 
-    draw(ctx, width / 7, width, height)
-    run = () => draw(ctx, width / 7, width, height)
-  }, [])
+    draw(ctx, width / size, width, height)
+    run = () => draw(ctx, width / size, width, height)
+  }, [size])
   return (
     <>
       <main className="page">
@@ -83,7 +85,11 @@ export default function () {
           <ChevronLeftIcon className="w-6 h-6" />
         </Link>
         <div className="centered">
-          <canvas onClick={() => run()} className="canvas" ref={el}></canvas>
+          <canvas
+            onClick={() => setSize((size % 30) + 1)}
+            className="canvas"
+            ref={el}
+          ></canvas>
         </div>
       </main>
     </>
