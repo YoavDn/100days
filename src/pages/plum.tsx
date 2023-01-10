@@ -17,7 +17,6 @@ export default function () {
   const el = useRef<HTMLCanvasElement | null>(null)
   const { random } = Math
   const [test, setTest] = useState(0)
-
   const [init, setInit] = useState(5)
   const [len, setLen] = useState(5)
   const [stopped, setStopped] = useState(false)

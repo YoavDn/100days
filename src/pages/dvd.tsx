@@ -57,8 +57,9 @@ export default function () {
       const nx = x + speedX
       const ny = y + speedY
 
+      ctx.fillStyle = 'black'
+      ctx.fillRect(0, 0, width, height)
       ctx.fillStyle = color
-      ctx.clearRect(0, 0, width, height)
       ctx.fillRect(x, y, rectSize, rectSize)
 
       steps.push(() => move(nx, ny))
