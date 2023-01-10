@@ -7,6 +7,7 @@ const links = [
   { url: '/plum', title: "Antfu's plum", number: '03' },
   { url: '/joy-division', title: 'Joy division', number: '04' },
   { url: '/cubic-disarray', title: 'Cubic Disarray', number: '05' },
+  { url: '/triangular-mesh', title: 'Triangular mesh', number: '06' },
 ]
 
 export default function () {
