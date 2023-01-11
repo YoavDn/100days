@@ -67,7 +67,7 @@ function draw(
 
 export default function () {
   const el = useRef<HTMLCanvasElement | null>(null)
-  const [size, setSize] = useState(7)
+  const [size, setSize] = useState(12)
 
   let run = () => {}
   useEffect(() => {

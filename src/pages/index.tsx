@@ -8,6 +8,7 @@ const links = [
   { url: '/joy-division', title: 'Joy division', number: '04' },
   { url: '/cubic-disarray', title: 'Cubic Disarray', number: '05' },
   { url: '/triangular-mesh', title: 'Triangular mesh', number: '06' },
+  { url: '/circles', title: 'Circles', number: '07' },
 ]
 
 export default function () {
