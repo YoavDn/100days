@@ -20,7 +20,6 @@ function drawTriangle(
   ctx.fill()
   ctx.stroke()
 }
-
 function draw(
   ctx: CanvasRenderingContext2D,
   size: number,
@@ -41,7 +40,6 @@ function draw(
         y: i + (Math.random() * 0.8 - 0.4) * size,
       }
       line.push(dot)
-
       ctx.beginPath()
       ctx.arc(dot.x, dot.y, 1, 0, r360, true)
       ctx.fill()
