@@ -61,6 +61,7 @@ export default function () {
       ctx.fillRect(0, 0, width, height)
       ctx.fillStyle = color
       ctx.fillRect(x, y, rectSize, rectSize)
+      ctx.rect(x, y, rectSize, rectSize)
 
       steps.push(() => move(nx, ny))
     }
