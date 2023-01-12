@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
-import { Note } from '../components/Note'
 
 import { Link } from 'react-router-dom'
 import { initCanvas } from '../utils'
@@ -17,7 +16,7 @@ const draw = (
 
   for (let x = 0; x < width; x += tileSize) {
     for (let y = 0; y < height; y += tileSize) {
-      let isToLeft = random() >= 0.5
+      const isToLeft = random() >= 0.5
 
       ctx.beginPath()
       if (isToLeft) {
@@ -33,7 +32,7 @@ const draw = (
   }
 }
 
-export default function () {
+function Tilling() {
   const el = useRef<HTMLCanvasElement | null>(null)
   const [tileSize, setTileSize] = useState(2)
 
@@ -63,3 +62,4 @@ export default function () {
     </>
   )
 }
+export default Tilling

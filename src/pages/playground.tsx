@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { initCanvas, plusOrMinus, r360 } from '../utils'
+import { initCanvas } from '../utils'
 
 function Circles() {
   const el = useRef<HTMLCanvasElement | null>(null)

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import { useRafLoop } from 'react-use'
@@ -9,12 +9,14 @@ const rectSize = 20
 let speedX = 2
 let speedY = 2
 const f = {
-  init: () => {},
+  init: () => {
+    null
+  },
 }
 let steps: Function[] = []
 let prevSteps: Function[] = []
 
-export default function () {
+function DVD() {
   const el = useRef<HTMLCanvasElement | null>(null)
 
   const frame = () => {
@@ -26,7 +28,7 @@ export default function () {
     prevSteps.forEach(i => i())
   }
 
-  const [stopLoop, startLoop, isLoopActive] = useRafLoop(frame, false)
+  const [stopLoop, startLoop] = useRafLoop(frame, false)
 
   useEffect(() => {
     const canvas = el.current!
@@ -97,3 +99,4 @@ export default function () {
     </>
   )
 }
+export default DVD
