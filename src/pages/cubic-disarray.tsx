@@ -1,4 +1,4 @@
-import { initCanvas, r90, plusOrMinus, randomColor } from '../utils'
+import { initCanvas, plusOrMinus } from '../utils'
 import { Link } from 'react-router-dom'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { useState, useRef, useEffect } from 'react'
@@ -9,11 +9,11 @@ function draw(
   w: number,
   h: number
 ) {
-  for (let i = size; i <= w - size; i += size) {
+  for (let i = size; i <= h - size; i += size) {
     for (let j = size; j <= w - size; j += size) {
-      let rotateAmt =
+      const rotateAmt =
         (((j / w) * Math.PI) / 90) * plusOrMinus() * Math.random() * (size / 2)
-      let translateAmt = ((j / w) * plusOrMinus() * Math.random() * size) / 2
+      const translateAmt = ((j / w) * plusOrMinus() * Math.random() * size) / 2
       ctx.save()
       ctx.translate(i + translateAmt + size / 3, j + size / 3)
       ctx.rotate(rotateAmt)
@@ -28,7 +28,7 @@ function draw(
   }
 }
 
-export default function () {
+function CubicDisarray() {
   const el = useRef<HTMLCanvasElement | null>(null)
   const [nCubes, setNCubes] = useState(19)
 
@@ -56,3 +56,4 @@ export default function () {
     </>
   )
 }
+export default CubicDisarray

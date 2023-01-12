@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
-import { useState, useRef, useEffect, createContext } from 'react'
+import { useRef, useEffect } from 'react'
 import { initCanvas } from '../utils'
 const { random } = Math
 
@@ -14,7 +14,7 @@ function draw(
 
   for (let i = step; i <= w - step; i += step) {
     const line: { x: number; y: number }[] = []
-    for (let j = step; j <= w - step; j += step) {
+    for (let j = step; j <= h - step; j += step) {
       const distanceToCenter = Math.abs(j - w / 2)
       const variance = Math.max(w / 2 - 100 - distanceToCenter, 0)
       const dif = ((random() * variance) / 2) * -1
@@ -29,10 +29,10 @@ function draw(
     ctx.beginPath()
     ctx.moveTo(lines[i][0].x, lines[i][0].y)
 
-    for (var j = 0; j < lines[i].length - 1; j++) {
+    for (let j = 0; j < lines[i].length - 1; j++) {
       // calculating the line middle point and adding control point
-      let xc = (lines[i][j].x + lines[i][j + 1].x) / 2
-      let yc = (lines[i][j].y + lines[i][j + 1].y) / 2
+      const xc = (lines[i][j].x + lines[i][j + 1].x) / 2
+      const yc = (lines[i][j].y + lines[i][j + 1].y) / 2
       ctx.quadraticCurveTo(lines[i][j].x, lines[i][j].y, xc, yc)
     }
 
@@ -44,7 +44,7 @@ function draw(
   }
 }
 
-export default function () {
+function JoyDivision() {
   const el = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
@@ -68,3 +68,4 @@ export default function () {
     </>
   )
 }
+export default JoyDivision

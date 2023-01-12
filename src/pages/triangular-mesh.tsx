@@ -1,7 +1,7 @@
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { initCanvas, r180, r360, randomColor } from '../utils'
+import { initCanvas, r360, randomColor } from '../utils'
 
 type PointType = { x: number; y: number }
 type LineType = PointType[]
@@ -65,18 +65,16 @@ function draw(
   }
 }
 
-export default function () {
+function Triangular() {
   const el = useRef<HTMLCanvasElement | null>(null)
   const [size, setSize] = useState(12)
 
-  let run = () => {}
   useEffect(() => {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
     const { width, height } = canvas
 
     draw(ctx, width / size, width, height)
-    run = () => draw(ctx, width / size, width, height)
   }, [size])
   return (
     <>
@@ -95,3 +93,5 @@ export default function () {
     </>
   )
 }
+
+export default Triangular

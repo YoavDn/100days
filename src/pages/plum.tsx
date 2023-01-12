@@ -5,18 +5,21 @@ import { useRafLoop } from 'react-use'
 import { initCanvas, polar2cart, r15, r180, r90 } from '../utils'
 
 const f = {
-  start: () => {},
-  step: (x: number, y: number, r: number) => {},
+  start: () => {
+    null
+  },
+  step: (x: number, y: number, r: number) => {
+    null
+  },
 }
 
 let steps: Function[] = []
 let prevSteps: Function[] = []
 let iterations = 0
 
-export default function () {
+function Plum() {
   const el = useRef<HTMLCanvasElement | null>(null)
   const { random } = Math
-  const [test, setTest] = useState(0)
   const [init, setInit] = useState(5)
   const [len, setLen] = useState(5)
   const [stopped, setStopped] = useState(false)
@@ -91,3 +94,4 @@ export default function () {
     </>
   )
 }
+export default Plum

@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { initCanvas, plusOrMinus, r360, randomColor } from '../utils'
-const { random, sin, cos, floor, sqrt } = Math
+import { initCanvas, r360 } from '../utils'
+const { random, floor, sqrt } = Math
 
 type CircleType = { x: number; y: number; r: number }
-export default function () {
+function Circles() {
   const el = useRef<HTMLCanvasElement | null>(null)
-  const [step, setStep] = useState(20)
   useEffect(() => {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
-    const { width, height } = canvas
+    const { width } = canvas
 
     const circles: CircleType[] = []
     const minR = 2
@@ -51,8 +50,6 @@ export default function () {
       circles.push(circle)
       ctx.beginPath()
       ctx.arc(circle.x, circle.y, circle.r, 0, r360)
-      //   ctx.fillStyle = `#${randomColor()}`
-      //   ctx.fill()
       ctx.stroke()
     }
 
@@ -88,3 +85,4 @@ export default function () {
     </>
   )
 }
+export default Circles

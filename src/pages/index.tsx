@@ -11,7 +11,7 @@ const links = [
   { url: '/circles', title: 'Circles', number: '07' },
 ]
 
-export default function () {
+function App() {
   return (
     <>
       <Note>
@@ -60,3 +60,4 @@ export default function () {
     </>
   )
 }
+export default App

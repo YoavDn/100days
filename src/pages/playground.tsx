@@ -2,17 +2,23 @@ import { useEffect, useRef, useState } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import { initCanvas, plusOrMinus, r360 } from '../utils'
-const { random, sin, cos } = Math
 
-export default function () {
+function Circles() {
   const el = useRef<HTMLCanvasElement | null>(null)
-  const [step, setStep] = useState(20)
+  //   const [step, setStep] = useState(20)
+
   useEffect(() => {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
     const { width, height } = canvas
 
-    const draw = () => {}
+    const draw = () => {
+      ctx.moveTo(40, 40)
+      ctx.quadraticCurveTo(50, 50, 40, 70)
+
+      ctx.stroke()
+    }
+
     draw()
   }, [])
   return (
@@ -28,3 +34,5 @@ export default function () {
     </>
   )
 }
+
+export default Circles
