@@ -5,11 +5,12 @@ const links = [
   { url: '/tilling', title: 'Tiles', number: '01' },
   { url: '/dvd', title: 'DVD', number: '02' },
   { url: '/plum', title: "Antfu's plum", number: '03' },
-  { url: '/joy-division', title: 'Joy division', number: '04' },
-  { url: '/cubic-disarray', title: 'Cubic Disarray', number: '05' },
-  { url: '/triangular-mesh', title: 'Triangular mesh', number: '06' },
+  { url: '/joy-division', title: 'Joy', number: '04' },
+  { url: '/cubic-disarray', title: 'Cubic', number: '05' },
+  { url: '/triangular-mesh', title: 'Triangular', number: '06' },
   { url: '/circles', title: 'Circles', number: '07' },
   { url: '/random', title: 'Random', number: '08' },
+  { url: '/Lines', title: 'Lines', number: '09' },
 ]
 
 function App() {
