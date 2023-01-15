@@ -36,11 +36,8 @@ function Webs() {
       const nx = x + random() * 10 * plusOrMinus()
       const ny = y + random() * 10 * plusOrMinus()
 
-      const cx = (x + nx) / 2
-      const cy = (y + ny) / 2
-
       if (iterations % 10 === 0) {
-        lineWidth = (lineWidth % 3) + 1
+        lineWidth = (lineWidth % 5) + 1
       }
       ctx.strokeStyle = `#${color}`
       ctx.lineWidth = lineWidth

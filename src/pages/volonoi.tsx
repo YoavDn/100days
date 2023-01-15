@@ -1,28 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { initCanvas, polar2cart, r360 } from '../utils'
+import { getDistance, initCanvas, randomColor } from '../utils'
 
-function Circles() {
+function Volonoi() {
   const el = useRef<HTMLCanvasElement | null>(null)
-  //   const [step, setStep] = useState(20)
 
   useEffect(() => {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
     const { width, height } = canvas
-
-    const draw = () => {
-      ctx.arc(200, 200, 100, 0, r360)
-
-      const [nx, ny] = polar2cart(200, 200, 100, 180)
-
-      ctx.moveTo(nx, ny)
-      ctx.lineTo(nx + 100, ny)
-      ctx.stroke()
-    }
-
-    draw()
   }, [])
   return (
     <>
@@ -38,4 +25,4 @@ function Circles() {
   )
 }
 
-export default Circles
+export default Volonoi

@@ -17,4 +17,8 @@ export function polar2cart(x = 0, y = 0, r = 0, theta = 0) {
   return [x + dx, y + dy]
 }
 
+export function getDistance(x1: number, x2: number, y1: number, y2: number) {
+  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
+}
+
 export const plusOrMinus = () => (Math.random() < 0.5 ? 1 : -1)
