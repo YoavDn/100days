@@ -24,8 +24,8 @@ export function initCanvas(
 
   canvas.style.width = `${width}px`
   canvas.style.height = `${height}px`
-  canvas.width = dpi * width
-  canvas.height = dpi * height
+  canvas.width = dpr * width
+  canvas.height = dpr * height
   ctx.scale(dpi, dpi)
 
   return { ctx, dpi }

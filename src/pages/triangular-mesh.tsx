@@ -30,11 +30,11 @@ function draw(
   ctx.lineJoin = 'bevel'
   const lines: LineType[] = []
   let odd = false
-  for (let i = size / 2; i <= h; i += size) {
+  for (let i = size / 2; i <= 400 - size; i += size) {
     const line: PointType[] = []
     odd = !odd
 
-    for (let j = size / 2; j <= w - size; j += size) {
+    for (let j = size / 2; j <= 400 - size; j += size) {
       const dot: PointType = {
         x: j + (Math.random() * 0.8 - 0.4) * size + (odd ? size / 2 : 0),
         y: i + (Math.random() * 0.8 - 0.4) * size,

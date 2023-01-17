@@ -71,8 +71,8 @@ function Temp() {
     const start = () => {
       stopLoop()
       prevSteps = []
-      const line: LineType = [[0, 200]]
-      const line2: LineType = [[200, 0]]
+      const line: LineType = [[0, height / 2]]
+      const line2: LineType = [[width / 2, 0]]
       lines.push(line, line2)
       steps = [() => step(line, 0), () => step(line2, Math.PI / 2)]
       startLoop()

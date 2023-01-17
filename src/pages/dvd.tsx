@@ -32,15 +32,16 @@ function DVD() {
 
   useEffect(() => {
     const canvas = el.current!
-    const { ctx } = initCanvas(canvas, 500)
+    const { ctx } = initCanvas(canvas, 500, 400)
     const { width, height } = canvas
 
+    // console.log(width, height)
     let x = 0
     let y = 0
     let color = `#${randomColor()}`
 
     const move = (x: number, y: number) => {
-      if (x >= width - rectSize) {
+      if (x >= 500 - rectSize) {
         speedX = -Math.abs(speedX)
         color = `#${randomColor()}`
       }
@@ -48,7 +49,7 @@ function DVD() {
         speedX = Math.abs(speedX)
         color = `#${randomColor()}`
       }
-      if (y > height - rectSize) {
+      if (y > 400 - rectSize) {
         speedY = -Math.abs(speedY)
         color = `#${randomColor()}`
       }
