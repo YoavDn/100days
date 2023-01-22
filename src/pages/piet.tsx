@@ -19,6 +19,8 @@ function Piet() {
 
     squares.push({ x: 0, y: 0, width, height })
 
+   const yoav = () => 'i don't like it' 
+
     function draw() {
       for (let i = 0; i < squares.length; i++) {
         const square = squares[i]
