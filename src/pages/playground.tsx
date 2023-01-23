@@ -13,12 +13,7 @@ function Circles() {
     const { width, height } = canvas
 
     const draw = () => {
-      ctx.arc(200, 200, 100, 0, r360)
-
-      const [nx, ny] = polar2cart(200, 200, 100, 180)
-
-      ctx.moveTo(nx, ny)
-      ctx.lineTo(nx + 100, ny)
+      ctx.arc(200, 200, 30, 0, Math.PI * 2)
       ctx.stroke()
     }
 

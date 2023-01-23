@@ -21,7 +21,7 @@ function Piet() {
     const { ctx } = initCanvas(canvas)
     const { width, height } = canvas
     ctx.lineWidth = 8
-    const step = width / 7
+    const step = width / 6
 
     const white = '#F2F5F1'
     const colors = ['#D40920', '#1356A2', '#F7D842']
@@ -117,6 +117,7 @@ function Piet() {
 
     draw()
   }, [])
+
   return (
     <>
       <main className="page">
