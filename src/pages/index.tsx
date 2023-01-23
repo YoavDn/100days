@@ -12,6 +12,7 @@ const links = [
   { url: '/random', title: 'Random', number: '08' },
   { url: '/Lines', title: 'Lines', number: '09' },
   { url: '/piet', title: 'Piet', number: '10' },
+  { url: '/circles2', title: 'Circles2', number: '11' },
 ]
 
 function App() {
