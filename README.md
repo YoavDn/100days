@@ -5,4 +5,4 @@
 This Site is inspired by Tim Holman's killer JS Conf talk
 "_Generative Art Speedrun_" You should Check it out
 
-[Live Size](gen-art-newbie.vercel.app) | [Tim's talk](https://www.youtube.com/watch?v=pvZiB7NkT8M&t=9078s)
+[Live Site](gen-art-newbie.vercel.app) | [Tim's talk](https://www.youtube.com/watch?v=pvZiB7NkT8M&t=9078s)
