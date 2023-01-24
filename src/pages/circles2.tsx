@@ -6,7 +6,7 @@ import {
   initCanvas,
   polar2cart,
   r180,
-  r360,
+  r90,
   range,
   shuffle,
 } from '../utils'
@@ -42,7 +42,7 @@ function Circles2() {
     const blockSize = 400 / 8
 
     f.start = () => {
-      theme = shuffle(colorSchemes).pop()
+      theme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)]
       draw()
     }
 
@@ -85,6 +85,10 @@ function Circles2() {
             p1(0, 0)
           } else if (pattern === 'p2') {
             p2(0, 0)
+          } else if (pattern === 'p3') {
+            p3(0, 0)
+          } else if (pattern === 'p4') {
+            p4(0, 0)
           }
 
           ctx.restore()
@@ -97,15 +101,35 @@ function Circles2() {
     function p1(x: number, y: number) {
       ctx.rotate(deg2Rad(90 * Math.round(range(1, 5))))
       ctx.fillStyle = theme[clrQueue[1]]
-      arc(0 - blockSize / 2, 0, blockSize, deg2Rad(270), deg2Rad(450))
+      arc(x - blockSize / 2, y, blockSize, deg2Rad(270), deg2Rad(450))
       ctx.fillStyle = theme[clrQueue[2]]
-      arc(0 + blockSize / 2, 0, blockSize, deg2Rad(90), deg2Rad(270))
+      arc(x + blockSize / 2, y, blockSize, deg2Rad(90), deg2Rad(270))
     }
 
     function p2(x: number, y: number) {
       ctx.rotate(deg2Rad(90 * Math.round(range(1, 5))))
       ctx.fillStyle = theme[clrQueue[1]]
-      arc(0 - blockSize / 2, 0, blockSize, deg2Rad(270), deg2Rad(450))
+      arc(x - blockSize / 2, y, blockSize, deg2Rad(270), deg2Rad(450))
+    }
+
+    function p3(x: number, y: number) {
+      if (Math.random() > 0.4) {
+        ctx.fillStyle = theme[clrQueue[1]]
+        arc(x, y + blockSize / 2, blockSize, deg2Rad(270), deg2Rad(450))
+        ctx.fillStyle = theme[clrQueue[2]]
+      }
+    }
+    function p4(x: number, y: number) {
+      ctx.rotate(deg2Rad(90 * Math.round(range(1, 5))))
+      ctx.fillStyle = theme[clrQueue[1]]
+      arc(x - blockSize / 2, y, blockSize, deg2Rad(270), deg2Rad(450))
+      ctx.fillStyle = theme[clrQueue[2]]
+      arc(x + blockSize / 2, y, blockSize, deg2Rad(90), deg2Rad(270))
+
+      ctx.fillStyle = theme[clrQueue[1]]
+      arc(x, y + blockSize / 2, blockSize, deg2Rad(180), deg2Rad(360))
+      ctx.fillStyle = theme[clrQueue[2]]
+      arc(x, y - blockSize / 2, blockSize, deg2Rad(0), deg2Rad(180))
     }
 
     //helpers
@@ -143,7 +167,7 @@ function Circles2() {
             onClick={() => f.start()}
             ref={el}
           ></canvas>
-          <div className="flex gap-2 text-gray-400 font-mono py-2 ">
+          <div className="flex gap-2 pt-4 text-gray-400 items-center font-mono py-2 ">
             {patterns.map(p => (
               <button
                 onClick={() => setPattern(p)}
