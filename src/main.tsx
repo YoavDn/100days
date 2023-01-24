@@ -8,7 +8,15 @@ import { Analytics } from '@vercel/analytics/react'
 const App = () => {
   return (
     <div>
-      <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>
+      <Suspense
+        fallback={
+          <div className="h-screen flex items-center justify-center">
+            <p className="font-mono text-gray-500">Loading..</p>
+          </div>
+        }
+      >
+        {useRoutes(routes)}
+      </Suspense>
       <Analytics />
     </div>
   )
