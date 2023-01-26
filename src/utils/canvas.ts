@@ -1,3 +1,4 @@
+import { range } from './basic'
 export function initCanvas(
   canvas: HTMLCanvasElement,
   width = 400,
@@ -29,4 +30,43 @@ export function initCanvas(
   ctx.scale(dpi, dpi)
 
   return { ctx, dpi }
+}
+
+export function grain(
+  canvas: HTMLCanvasElement,
+  ctx: CanvasRenderingContext2D
+) {
+  const { width, height } = canvas
+  ctx.save()
+  //making the texture
+  for (let i = 0; i < width - 1; i += 2) {
+    for (let j = 0; j < height - 1; j += 2) {
+      const grey = Math.floor(range(205 - 40, 205 + 30))
+      ctx.fillStyle = 'rgba(' + grey + ',' + grey + ',' + grey + ', .1)'
+      _rect(ctx, { x: i, y: j, w: 2, h: 2 })
+    }
+  }
+  //making some gray darker dots
+  for (let i = 0; i < 30; i++) {
+    const grey = Math.floor(range(130, 215))
+    const opacity = (range(100, 170) / 255).toFixed(2)
+    ctx.fillStyle =
+      'rgba(' + grey + ',' + grey + ',' + grey + ', ' + opacity + ')'
+    _rect(ctx, {
+      x: range(0, width - 2),
+      y: range(0, height - 2),
+      w: range(1, 3),
+      h: range(1, 3),
+    })
+  }
+
+  ctx.restore()
+}
+
+function _rect(
+  ctx: CanvasRenderingContext2D,
+  pos: { x: number; y: number; w: number; h: number }
+) {
+  const { x, y, w, h } = pos
+  ctx.fillRect(x - w / 2, y - h / 2, w, h)
 }

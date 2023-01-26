@@ -13,6 +13,7 @@ const links = [
   { url: '/Lines', title: 'Lines', number: '09' },
   { url: '/piet', title: 'Piet', number: '10' },
   { url: '/circles2', title: 'Circles2', number: '11' },
+  { url: '/pixelator', title: 'Pixelator', number: '12' },
 ]
 
 function App() {
