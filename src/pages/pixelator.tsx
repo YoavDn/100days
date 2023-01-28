@@ -27,7 +27,7 @@ function Pixelator() {
       const blob = URL.createObjectURL(file)
       img.onload = () => {
         ctx.drawImage(img, 0, 0, 400, 400)
-        grain(canvas, ctx)
+        grain(w, ctx)
         pixelator()
       }
       img.src = blob
@@ -49,7 +49,7 @@ function Pixelator() {
           )
         }
       }
-      ctx.clip()
+
       ctx.drawImage(img, w, h)
     }
 
