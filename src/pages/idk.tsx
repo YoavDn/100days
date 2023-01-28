@@ -4,7 +4,13 @@ import {
   DocumentArrowDownIcon,
 } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { initCanvas, randomPalette } from '../utils'
+import {
+  deg2Rad,
+  getDistance,
+  grain,
+  initCanvas,
+  randomPalette,
+} from '../utils'
 import { useRafLoop } from 'react-use'
 
 const { cos, sin } = Math
@@ -13,14 +19,10 @@ async function draw(ctx: CanvasRenderingContext2D, size: number, step = 10) {
   const palette = await randomPalette()
   const blockSize = size / step
 
-  for (let y = blockSize / 2; y < size; y += blockSize) {
-    for (let x = blockSize / 2; x < size; x += blockSize) {
-      ctx.beginPath()
-      ctx.fillStyle = palette[Math.floor(Math.random() * palette.length - 1)]
-      ctx.fillRect(x - blockSize / 2, y - blockSize / 2, blockSize, blockSize)
-      ctx.stroke()
-    }
-  }
+  //   ctx.save()
+  ctx.translate(0, 0)
+  ctx.fillStyle = 'red'
+  ctx.fillRect(0, 0, size, size)
 }
 
 function Sketch() {

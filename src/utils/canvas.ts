@@ -32,15 +32,11 @@ export function initCanvas(
   return { ctx, dpi }
 }
 
-export function grain(
-  canvas: HTMLCanvasElement,
-  ctx: CanvasRenderingContext2D
-) {
-  const { width, height } = canvas
+export function grain(size: number, ctx: CanvasRenderingContext2D) {
   ctx.save()
   //making the texture
-  for (let i = 0; i < width - 1; i += 2) {
-    for (let j = 0; j < height - 1; j += 2) {
+  for (let i = 0; i < size - 1; i += 2) {
+    for (let j = 0; j < size - 1; j += 2) {
       const grey = Math.floor(range(205 - 40, 205 + 30))
       ctx.fillStyle = 'rgba(' + grey + ',' + grey + ',' + grey + ', .1)'
       _rect(ctx, { x: i, y: j, w: 2, h: 2 })
@@ -53,8 +49,8 @@ export function grain(
     ctx.fillStyle =
       'rgba(' + grey + ',' + grey + ',' + grey + ', ' + opacity + ')'
     _rect(ctx, {
-      x: range(0, width - 2),
-      y: range(0, height - 2),
+      x: range(0, size - 2),
+      y: range(0, size - 2),
       w: range(1, 3),
       h: range(1, 3),
     })
