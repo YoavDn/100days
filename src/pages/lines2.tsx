@@ -15,9 +15,9 @@ const draw = async (ctx: CanvasRenderingContext2D) => {
   const size = 400
   ctx.fillStyle = '#03001C'
   ctx.fillRect(0, 0, size, size)
+  const colors = randomPalette()
 
   const makeShape = () => {
-    const colors = randomPalette()
     const change50 = Math.random() > 0.5
     const change20 = Math.random() > 0.8
 
