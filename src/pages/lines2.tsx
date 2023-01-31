@@ -76,6 +76,7 @@ function Circles() {
 
     draw(ctx)
   }, [])
+
   return (
     <>
       <main className="page">
