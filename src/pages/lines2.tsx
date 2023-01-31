@@ -10,12 +10,10 @@ import {
   range,
 } from '../utils'
 
-const draw = async (ctx: CanvasRenderingContext2D) => {
+const draw = async (ctx: CanvasRenderingContext2D, colors: string[]) => {
   const size = 400
   ctx.fillStyle = '#03001C'
   ctx.fillRect(0, 0, size, size)
-
-  const colors = await randomPalette()
 
   const makeShape = () => {
     const change50 = Math.random() > 0.5
@@ -74,7 +72,12 @@ function Circles() {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
 
-    draw(ctx)
+    const init = async () => {
+      const colors = await randomPalette()
+
+      draw(ctx, colors)
+    }
+    init()
   }, [])
 
   return (
