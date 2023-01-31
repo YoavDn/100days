@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
+
 import {
   deg2Rad,
   grain,
@@ -10,12 +11,13 @@ import {
   range,
 } from '../utils'
 
-const draw = async (ctx: CanvasRenderingContext2D, colors: string[]) => {
+const draw = async (ctx: CanvasRenderingContext2D) => {
   const size = 400
   ctx.fillStyle = '#03001C'
   ctx.fillRect(0, 0, size, size)
 
   const makeShape = () => {
+    const colors = randomPalette()
     const change50 = Math.random() > 0.5
     const change20 = Math.random() > 0.8
 
@@ -72,12 +74,7 @@ function Circles() {
     const canvas = el.current!
     const { ctx } = initCanvas(canvas)
 
-    const init = async () => {
-      const colors = await randomPalette()
-      console.log(colors)
-      draw(ctx, colors)
-    }
-    init()
+    draw(ctx)
   }, [])
 
   return (
