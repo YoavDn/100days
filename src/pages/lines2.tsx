@@ -74,7 +74,7 @@ function Circles() {
 
     const init = async () => {
       const colors = await randomPalette()
-
+      console.log(colors)
       draw(ctx, colors)
     }
     init()
