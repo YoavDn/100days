@@ -9,7 +9,7 @@ export async function randomPalette(size = 1): Promise<string[]> {
     size > 500 ? '1000' : size > 200 ? 500 : size > 100 ? 200 : 100
 
   const getColors = async (): Promise<string[][]> => {
-    const res = await fetch(`../../palettes/${fileName}.json`)
+    const res = await fetch(`../palettes/${fileName}.json`)
     const colors = await res.json()
     return colors
   }
