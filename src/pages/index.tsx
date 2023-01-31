@@ -14,6 +14,7 @@ const links = [
   { url: '/piet', title: 'Piet', number: '10' },
   { url: '/circles2', title: 'Circles2', number: '11' },
   { url: '/pixelator', title: 'Pixelator', number: '12' },
+  { url: '/lines2', title: 'Lines2', number: '13' },
 ]
 
 function App() {
