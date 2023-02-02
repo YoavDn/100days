@@ -25,9 +25,6 @@ async function draw(ctx: CanvasRenderingContext2D) {
 
       ctx.translate(x - blockSize / 2, y - blockSize / 2)
       ctx.beginPath()
-      //   ctx.rect(0, 0, blockSize, blockSize)
-      //   ctx.stroke()
-      //   ctx.beginPath()
 
       if (Math.random() > 0.5) {
         p3(blockSize)
@@ -39,11 +36,17 @@ async function draw(ctx: CanvasRenderingContext2D) {
   }
 
   function p2(blockSize: number) {
+    const change50 = Math.random() > 0.5
     const tileSize = blockSize / 20
 
     for (let y = tileSize / 2; y < blockSize; y += tileSize) {
-      for (let x = 0; x < blockSize; x += blockSize / 2) {
+      for (let x = tileSize / 2; x < blockSize; x += blockSize / 2) {
         ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)]
+        if (change50) {
+          ctx.beginPath()
+          ctx.fillRect(0, y - tileSize / 2, blockSize, tileSize)
+          continue
+        }
         ctx.beginPath()
         ctx.fillRect(
           x - tileSize / 2,
@@ -58,14 +61,23 @@ async function draw(ctx: CanvasRenderingContext2D) {
   }
 
   function p3(blockSize: number) {
-    const step = blockSize / Math.floor(range(7, 14))
+    const chance50 = Math.random() > 0.5
+    // const step = blockSize / Math.floor(range(7, 14))
+    const step = blockSize / 20
 
-    for (let i = step / 2; i < blockSize; i += step) {
-      ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)]
-      ctx.beginPath()
-      ctx.fillRect(i - step / 2, 0, step, blockSize)
-      ctx.fill()
-      ctx.stroke()
+    for (let i = step / 2; i < blockSize; i += blockSize / 2) {
+      for (let j = step / 2; j < blockSize; j += step) {
+        ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)]
+        if (chance50) {
+          ctx.beginPath()
+          ctx.fillRect(j - step / 2, 0, step, blockSize)
+          continue
+        }
+        ctx.beginPath()
+        ctx.fillRect(j - step / 2, i - step / 2, j, blockSize / 2)
+        ctx.fill()
+        ctx.stroke()
+      }
     }
   }
 
