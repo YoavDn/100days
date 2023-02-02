@@ -9,6 +9,7 @@ import {
   initCanvas,
   plusOrMinus,
   randomPalette,
+  range,
   shuffle,
 } from '../utils'
 
@@ -24,19 +25,17 @@ async function draw(ctx: CanvasRenderingContext2D) {
 
       ctx.translate(x - blockSize / 2, y - blockSize / 2)
       ctx.beginPath()
-      ctx.rect(0, 0, blockSize, blockSize)
-      ctx.stroke()
-      ctx.beginPath()
-      //   p1(blockSize)
-      p2(blockSize)
+      //   ctx.rect(0, 0, blockSize, blockSize)
+      //   ctx.stroke()
+      //   ctx.beginPath()
+
+      if (Math.random() > 0.5) {
+        p3(blockSize)
+      } else {
+        p2(blockSize)
+      }
       ctx.restore()
     }
-  }
-
-  function p1(blockSize: number) {
-    ctx.beginPath()
-    ctx.arc(0 + blockSize / 2, 0 + blockSize / 2, blockSize / 2, 0, Math.PI * 2)
-    ctx.stroke()
   }
 
   function p2(blockSize: number) {
@@ -57,6 +56,20 @@ async function draw(ctx: CanvasRenderingContext2D) {
       }
     }
   }
+
+  function p3(blockSize: number) {
+    const step = blockSize / Math.floor(range(7, 14))
+
+    for (let i = step / 2; i < blockSize; i += step) {
+      ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)]
+      ctx.beginPath()
+      ctx.fillRect(i - step / 2, 0, step, blockSize)
+      ctx.fill()
+      ctx.stroke()
+    }
+  }
+
+  grain(size, ctx)
 }
 
 function Sketch() {
