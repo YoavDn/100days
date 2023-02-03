@@ -22,3 +22,5 @@ export function getDistance(x1: number, x2: number, y1: number, y2: number) {
 }
 
 export const plusOrMinus = () => (Math.random() < 0.5 ? 1 : -1)
+
+export const lerp = (a: number, b: number, pct: number) => a + pct * (b - a)
