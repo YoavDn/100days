@@ -1,30 +1,31 @@
 import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { initCanvas, lerp } from '../utils'
+import { grain, initCanvas, lerp } from '../utils'
 
 function draw(ctx: CanvasRenderingContext2D) {
   const size = 400
 
-  ctx.beginPath()
-  ctx.moveTo(200, 0)
-  ctx.lineTo(200, 400)
-  ctx.moveTo(0, 200)
-  ctx.lineTo(400, 200)
-  ctx.arc(size / 2, size / 2, 100, 0, Math.PI * 2)
-  ctx.stroke()
+  //   ctx.beginPath()
+  //   ctx.moveTo(200, 0)
+  //   ctx.lineTo(200, 400)
+  //   ctx.moveTo(0, 200)
+  //   ctx.lineTo(400, 200)
+  //   ctx.arc(size / 2, size / 2, 100, 0, Math.PI * 2)
+  //   ctx.stroke()
 
-  const angleStep = (Math.PI * 2) / 3
-
+  const count = 5
+  const angleStep = (Math.PI * 2) / count
   ctx.beginPath()
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= count; i++) {
     const x = 200 + Math.cos(i * angleStep) * 100
     const y = 200 + Math.sin(i * angleStep) * 100
 
-    ctx.lineTo(x, y)
-    // ctx.arc(x, y, 3, 0, Math.PI * 2)
-    ctx.stroke()
+    ctx.arc(x, y, 100, 0, Math.PI * 2)
   }
+  ctx.stroke()
+  //   ctx.fill()
+  grain(size, ctx)
 }
 
 function Circles() {
