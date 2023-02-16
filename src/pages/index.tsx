@@ -16,6 +16,7 @@ const links = [
   { url: '/pixelator', title: 'Pixelator', number: '12' },
   { url: '/lines2', title: 'Lines2', number: '13' },
   { url: '/rectangles', title: 'Rectangles', number: '14' },
+  { url: '/sineWave', title: 'Sine Wave', number: '15' },
 ]
 
 function App() {

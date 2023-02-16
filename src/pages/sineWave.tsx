@@ -1,13 +1,11 @@
 import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { grain, initCanvas, randomPalette, shuffle } from '../utils'
+import { initCanvas } from '../utils'
 
 // const { random, floor } = Math
 
 function init(ctx: CanvasRenderingContext2D) {
-  const colors = randomPalette()
-  console.log(colors)
   const size = 400
   let frames = 0
   const amplitude = 100
