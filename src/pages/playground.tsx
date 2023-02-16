@@ -1,30 +1,43 @@
 import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { grain, initCanvas, lerp } from '../utils'
+import { grain, initCanvas,  randomPalette, shuffle } from '../utils'
+
+// const { random, floor } = Math
+
 
 function draw(ctx: CanvasRenderingContext2D) {
   const size = 400
+  let colors = randomPalette()
+  ctx.lineWidth = 4
 
-  //   ctx.beginPath()
-  //   ctx.moveTo(200, 0)
-  //   ctx.lineTo(200, 400)
-  //   ctx.moveTo(0, 200)
-  //   ctx.lineTo(400, 200)
-  //   ctx.arc(size / 2, size / 2, 100, 0, Math.PI * 2)
-  //   ctx.stroke()
-
-  const count = 5
+  const count = 3
   const angleStep = (Math.PI * 2) / count
-  ctx.beginPath()
-  for (let i = 0; i <= count; i++) {
-    const x = 200 + Math.cos(i * angleStep) * 100
-    const y = 200 + Math.sin(i * angleStep) * 100
 
-    ctx.arc(x, y, 100, 0, Math.PI * 2)
+  function polygon(count: number) {
+    for (let i = 1; i <= count; i++) {
+      colors = shuffle(colors)
+      // ctx.fillStyle = colors[floor(random() * colors.length)]
+      const x = 0 + Math.cos(i * angleStep) * 100
+      const y = 0 + Math.sin(i * angleStep) * 100
+
+      ctx.fillStyle = colors[0]
+      ctx.save()
+      ctx.beginPath()
+      ctx.arc(x, y, 100, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.moveTo(x, y)
+      ctx.fillStyle = colors[1]
+      ctx.fillRect(x - 100 / 2, y - 100 / 2, 100, 100)
+      ctx.stroke()
+      ctx.restore()
+    }
   }
-  ctx.stroke()
-  //   ctx.fill()
+
+  for (let i = 0; i < 10; i++) {
+    polygon(20)
+  }
+
   grain(size, ctx)
 }
 
