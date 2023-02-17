@@ -9,7 +9,7 @@ import { grain, initCanvas,  randomPalette, shuffle } from '../utils'
 function draw(ctx: CanvasRenderingContext2D) {
   const size = 400
   let colors = randomPalette()
-  ctx.lineWidth = 4
+  ctx.lineWidth =55
 
   const count = 3
   const angleStep = (Math.PI * 2) / count
