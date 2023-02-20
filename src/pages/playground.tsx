@@ -1,44 +1,32 @@
 import { useEffect, useRef } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
-import { grain, initCanvas,  randomPalette, shuffle } from '../utils'
+import gsap from 'gsap'
+import { grain, initCanvas, randomPalette, shuffle } from '../utils'
 
-// const { random, floor } = Math
-
-
-function draw(ctx: CanvasRenderingContext2D) {
+function init(canvas: HTMLCanvasElement) {
+  const { ctx } = initCanvas(canvas)
   const size = 400
-  let colors = randomPalette()
-  ctx.lineWidth = 3
 
-  const count = 3
-  const angleStep = (Math.PI * 2) / count
+  const rectPos = { x: 0, y: 40, width: 30, heigth: 40 }
 
-  function polygon(count: number) {
-    for (let i = 1; i <= count; i++) {
-      colors = shuffle(colors)
-      // ctx.fillStyle = colors[floor(random() * colors.length)]
-      const x = 0 + Math.cos(i * angleStep) * 100
-      const y = 0 + Math.sin(i * angleStep) * 100
-
-      ctx.fillStyle = colors[0]
-      ctx.save()
-      ctx.beginPath()
-      ctx.arc(x, y, 100, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.moveTo(x, y)
-      ctx.fillStyle = colors[1]
-      ctx.fillRect(x - 100 / 2, y - 100 / 2, 100, 100)
-      ctx.stroke()
-      ctx.restore()
-    }
+  function move() {
+    gsap.to(rectPos, {
+      duration: 3,
+      ease: 'pow',
+      x: 400,
+      onUpdate: () => {
+        draw()
+      },
+    })
+    // the other stuff
   }
 
-  for (let i = 0; i < 10; i++) {
-    polygon(20)
+  function draw() {
+    ctx.fillRect(rectPos.x, rectPos.y, rectPos.width, rectPos.y)
   }
 
-  grain(size, ctx)
+  move()
 }
 
 function Circles() {
@@ -46,9 +34,8 @@ function Circles() {
 
   useEffect(() => {
     const canvas = el.current!
-    const { ctx } = initCanvas(canvas)
 
-    draw(ctx)
+    init(canvas)
   }, [])
 
   return (

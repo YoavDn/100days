@@ -2,8 +2,7 @@ import { range } from './basic'
 export function initCanvas(
   canvas: HTMLCanvasElement,
   width = 400,
-  height = 400,
-  _dpi?: number
+  height = 400
 ) {
   const ctx = canvas.getContext('2d')!
 
@@ -21,7 +20,7 @@ export function initCanvas(
     ctx.backingStorePixelRatio ||
     1
 
-  const dpi = _dpi || dpr / bsr
+  const dpi = dpr / bsr
 
   canvas.style.width = `${width}px`
   canvas.style.height = `${height}px`
