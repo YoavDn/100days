@@ -3,8 +3,6 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import { initCanvas } from '../utils'
 
-// const { random, floor } = Math
-
 function init(ctx: CanvasRenderingContext2D) {
   const size = 400
   let frames = 0
